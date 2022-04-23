@@ -43,25 +43,25 @@ Formatting
 ----------
 For root partition and storage partitions (Linux exclusive storage devices)
 
-.. code-block::
+.. code-block:: bash
 
    mkfs.ext4 /dev/partition
 
 For storage partitions shared with Windows
 
-.. code-block::
+.. code-block:: bash
 
    mkfs.ntfs /dev/partition
 
 For swap partition
 
-.. code-block::
+.. code-block:: bash
 
    mkswap /dev/swap_partition
 
 For EFI partition
 
-.. code-block::
+.. code-block:: bash
 
   mkfs.fat -F 32 /dev/efi_partition
   
@@ -69,25 +69,25 @@ Mounting the partitions
 -----------------------
 Mount root partition
 
-.. code-block::
+.. code-block:: bash
    
    mount /dev/root_partition /mnt
    
 Mount EFI partition
 
-.. code-block::
+.. code-block:: bash
 
    mount --mkdir /dev/efi_partition /mnt/efi
 
 Mount other partitions
 
-.. code-block::
+.. code-block:: bash
 
    mount --mkdir /dev/other_partitions /mnt/other_mount_points
    
 Enable swap
 
-.. code-block::
+.. code-block:: bash
 
    swapon /dev/swap_partition
    
@@ -96,14 +96,14 @@ Update mirror list
 ------------------
 Use reflector
 
-.. code-block::
+.. code-block:: bash
 
    reflector --country country --protocol https --sort score --save \etc\pacman.d\mirrorlist
    
 | Replace ``country`` with a comma separated list, e.g. ``Hong\ Kong,Japan``.
 | To get a list of countries, run
 
-.. code-block::
+.. code-block:: bash
 
    reflector --list-countries | less
    
@@ -111,7 +111,7 @@ Install essential packages
 --------------------------
 Use pacstrap
 
-.. code-block::
+.. code-block:: bash
 
    pacsctrap /mnt base base-devel linux linux-headers linux-firmware linux-lts linux-lts-headers
    
@@ -121,7 +121,7 @@ Use pacstrap
 | **Only install packages that are required for the installation process.**
 | Other user packages can be installed after the installation.
 
-.. code-block::
+.. code-block:: bash
    
    vim git man-db man-pages texinfo ntfs-3g networkmanager 
    
@@ -130,7 +130,7 @@ Configure the system
 Fstab
 ^^^^^
 
-.. code-block::
+.. code-block:: bash
 
    genfstab -U /mnt >> /mnt/etc/fstab
    
@@ -138,23 +138,56 @@ Check result in /mnt/etc/fstab in case of error.
 
 Chroot
 ^^^^^^
-.. code-block::
+.. code-block:: bash
 
    arch-chroot /mnt
    
 Time zone
 ^^^^^^^^^
-.. code-block::
+.. code-block:: bash
    
    ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
    
 run ``hwclock`` to generate ``/etc/adjtime``
 
-.. code-block::
+.. code-block:: bash
 
    hwclock --systohc
    
 Localization
 ^^^^^^^^^^^^
+Edit ``/etc/locale.gen`` and uncomment ``en_US.UTF-8 UTF-8`` and other required locales.
 
+.. code-block:: bash
 
+   # /etc/locale.gen
+   ...
+   en_US.UTF-8 UTF-8
+   ...
+   zh_hk.UTF-8 UTF-8
+   ...
+
+After that, run
+
+.. code-block:: bash
+
+   locale-gen
+
+Create ``/etc/locale.conf`` and set the ``LANG`` variable
+
+.. code-block:: bash
+
+   # /etc/locale.conf
+   LANG=en_US.UTF8 UTF8
+
+Network configuration
+^^^^^^^^^^^^^^^^^^^^^
+Creat ``/etc/hostname``
+
+.. code-block::
+
+   # /etc/hostname
+   myhostname
+   
+| I use the following convention for ``myhostname``: *name-OS*, e.g. ``Terrence-Linux``.
+| If necessary, add suffix to avoid ambiguity, e.g. ``Terrence-Linux-1`` or ``Terrence-Linux-5900X``.
