@@ -191,3 +191,60 @@ Creat ``/etc/hostname``
    
 | I use the following convention for ``myhostname``: *name-OS*, e.g. ``Terrence-Linux``.
 | If necessary, add suffix to avoid ambiguity, e.g. ``Terrence-Linux-1`` or ``Terrence-Linux-5900X``.
+
+Root password
+^^^^^^^^^^^^^
+Type
+
+.. code-block::
+
+   passwd
+   
+and set the root password
+
+Microcode
+^^^^^^^^^
+Install ``intel-ucode`` for Intel processors or ``amd-ucode`` for AMD processors:
+
+.. code-block::
+
+   pacman -Syu intel-ucode
+
+or
+
+.. code-block::
+
+   pacman -Syu amd-ucode
+
+Boot loader
+^^^^^^^^^^^
+Install ``grub`` and ``efibootmgr`` (and ``os-prober`` if dual boot)
+
+.. code-block::
+
+   pacman -Syu grub efibootmgr os-prober
+
+Edit the following in ``/etc/default/grub``
+
+.. code-block::
+
+   # /etc/default/grub
+   ...
+   GRUB_DEFAULT=saved
+   ...
+   GRUB_SAVEDEFAULT=true
+   ...
+   GRUB_DISABLE_SUBMENU=y
+
+After making changes in ``/etc/default/grub``, remember to generate ``/boot/grub/grub.cfg`` by typing
+
+.. code-block::
+
+   grub-mkconfig -o /boot/grub/grub.cfg
+
+Post installation
+=================
+Feel free to reboot and remove the installation media or simply continue working on it.
+
+Install Paru
+------------
