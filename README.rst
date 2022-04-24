@@ -5,7 +5,56 @@ Core scripts, templates, configuration files, and instructions for setting up my
 Installation
 ============
 | Follow the instructions below.
-| When in doubt, follow `installation guide <https://wiki.archlinux.org/title/Installation_guide>`_ in ArchWiki.
+| When in doubt, consult `installation guide <https://wiki.archlinux.org/title/Installation_guide>`_ in ArchWiki.
+| Boot into the installation live media and do the followings in the exact order.
+| To write the live image to a USB drive, type
+
+.. code-block:: bash
+
+   dd if=/path/to/live/image.iso of=/dev/usb_device status=progress
+
+Remember to use ``lsblk`` to check the USB drive's assigned block device, e.g. ``/dev/sda``.
+
+Connect to the internet
+-----------------------
+Use ``iwctl``.
+
+Type ``iwctl`` to enter an interactive prompt.
+
+.. code-block::
+
+   [iwd]#
+   
+Then, type the following commands to connect to your WIFI.
+
+.. code-block::
+
+   [iwd]# device list
+
+.. code-block::
+
+   [iwd]# station device scan
+
+where ``device`` is your device.
+
+.. code-block::
+
+   [iwd]# station device get-network
+
+.. code-block::
+
+   [iwd]# station device connect SSID
+   
+where ``SSID`` is your WIFI SSID.
+
+Type ``exit`` to exit the prompt.
+
+After that, confirm connection is established by
+
+.. code-block:: bash
+
+   ping google.com
+
 
 Partition
 ---------
@@ -123,7 +172,10 @@ Use pacstrap
 
 .. code-block:: bash
    
-   vim git man-db man-pages texinfo ntfs-3g networkmanager 
+   gvim git man-db man-pages texinfo ntfs-3g networkmanager sudo openssh
+   
+| Note, ``gvim`` contains the ``vim`` with ``+clipboard`` capability.
+| If ``+clipboard`` capability is not required, then replace ``gvim`` with ``vim`` instead.
    
 Configure the system
 --------------------
@@ -148,12 +200,18 @@ Time zone
    
    ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
    
-run ``hwclock`` to generate ``/etc/adjtime``
+Run ``hwclock`` to generate ``/etc/adjtime``
 
 .. code-block:: bash
 
    hwclock --systohc
-   
+
+Sync time.
+
+.. code-block:: bash
+
+   timdatectl set-ntp 1
+
 Localization
 ^^^^^^^^^^^^
 Edit ``/etc/locale.gen`` and uncomment ``en_US.UTF-8 UTF-8`` and other required locales.
@@ -184,7 +242,7 @@ Network configuration
 ^^^^^^^^^^^^^^^^^^^^^
 Creat ``/etc/hostname``
 
-.. code-block::
+.. code-block:: bash
 
    # /etc/hostname
    myhostname
@@ -196,7 +254,7 @@ Root password
 ^^^^^^^^^^^^^
 Type
 
-.. code-block::
+.. code-block:: bash
 
    passwd
    
@@ -206,13 +264,13 @@ Microcode
 ^^^^^^^^^
 Install ``intel-ucode`` for Intel processors or ``amd-ucode`` for AMD processors:
 
-.. code-block::
+.. code-block:: bash
 
    pacman -Syu intel-ucode
 
 or
 
-.. code-block::
+.. code-block:: bash
 
    pacman -Syu amd-ucode
 
@@ -220,13 +278,13 @@ Boot loader
 ^^^^^^^^^^^
 Install ``grub`` and ``efibootmgr`` (and ``os-prober`` if dual boot)
 
-.. code-block::
+.. code-block:: bash
 
    pacman -Syu grub efibootmgr os-prober
 
 Edit the following in ``/etc/default/grub``
 
-.. code-block::
+.. code-block:: bash
 
    # /etc/default/grub
    ...
@@ -238,13 +296,99 @@ Edit the following in ``/etc/default/grub``
 
 After making changes in ``/etc/default/grub``, remember to generate ``/boot/grub/grub.cfg`` by typing
 
-.. code-block::
+.. code-block:: bash
 
    grub-mkconfig -o /boot/grub/grub.cfg
 
 Post installation
 =================
-Feel free to reboot and remove the installation media or simply continue working on it.
+Feel free to reboot and remove the installation media. Or, simply continue.
+
+Create system user
+------------------
+| Create user and change password using ``useradd`` and ``passwd``.
+| Replace ``groups`` with ``wheel,audio,video,disk,storage,input`` and additional groups as needed.
+
+.. code-block:: bash
+
+   useradd -m -G groups terrencetec
+   passwd terrencetec
+
+sudo
+^^^^
+Type
+
+.. code-block:: bash
+
+   visudo
+   
+to edit the sudoer file.
+
+Uncomment the following line (line 82)
+
+.. code-block:: bash
+
+   %wheel ALL=(ALL) ALL
+
+Change user
+-----------
+Switch to the user.
+
+.. code-block:: bash
+
+   su terrencetec
+
+Switch to the user home directory
+
+.. code-block:: bash
+
+   cd ~
 
 Install Paru
 ------------
+.. code-block::
+
+   git clone https://aur.archlinux.org/paru.git
+   cd paru
+   makepkg -si
+
+
+Clone this repository
+---------------------
+Go back to home directory before cloning, i.e. don't clone this into the ``paru`` directory.
+
+.. code-block:: bash
+
+   git clone https://github.com/terrencetec/Arch-core.git
+   
+Or, use ssh if you are me. In this case, generate ssh-key and upload it to GitHub prior to this.
+
+.. code-block:: bash
+
+   ssh-keygen -t ed25519 -C "terrencetec@gmail.com"
+
+| And find the public key in where it is generated and somehow copy the thing to GitHub.
+| Then, clone with ssh   
+
+.. code-block:: bash
+
+   git@github.com:terrencetec/Arch-core.git
+   
+Install core packages
+---------------------
+| The core packages of my Linux system is listed in ``pkglist-core.txt``.
+| It contains
+
+.. code-block:: bash
+
+   xorg  # The display server.
+   xdg-user-dirs  # Create folders such as Downloads, Pictures, in home directory.
+   qtile  # My favorite window-tiling manager
+   ly  # Display manager, i.e. login screen.
+   rxvt-unicode  # My favorite terminal emulator
+   rxvt-unicode-terminfo
+   urxvt-perls
+   urxvt-resize-font-git
+   rofi  # My favorite program launcher
+   alsa-utils  # Audio stuff.
+   pulseaudio  # Audio stuff.
