@@ -289,6 +289,12 @@ Install ``grub`` and ``efibootmgr`` (and ``os-prober`` if dual boot)
 
    pacman -Syu grub efibootmgr os-prober
 
+Install boot loader
+
+.. code-block:: bash
+
+   grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
+   
 Edit the following in ``/etc/default/grub``
 
 .. code-block:: bash
