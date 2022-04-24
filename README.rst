@@ -133,7 +133,14 @@ Mount other partitions
 .. code-block:: bash
 
    mount --mkdir /dev/other_partitions /mnt/other_mount_points
-   
+
+For addition storages, change the group of the directory and permission
+
+.. code-block:: bash
+
+   chmod 775 /path/to/storage
+   chown root:storage /path/to/storage
+
 Enable swap
 
 .. code-block:: bash
