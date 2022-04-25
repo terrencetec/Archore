@@ -122,6 +122,8 @@ if "thermal_sensor" in config.sections():
     font = config["thermal_sensor"].get("font", fallback=default_font)
     fontsize = config["thermal_sensor"].getint(
         "fontsize", fallback=default_fontsize)
+    foreground = config["thermal_sensor"].get(
+        "foreground", fallback=default_foreground)
     widget_thermalsensor = widget.ThermalSensor(
         tag_sensor=tag_sensor,
         fmt=fmt,
