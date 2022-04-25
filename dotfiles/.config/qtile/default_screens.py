@@ -18,7 +18,7 @@ default_font = font
 default_fontsize = font_size
 default_clock_fontsize = int(font_size/2)
 default_foreground = terminal_green
-
+default_icon_path = home+"/.config/qtile/icon.png"
 extension_defaults = widget_defaults.copy()
 
 def rofi_exit():
@@ -33,7 +33,7 @@ widget_list = []
 
 if "image" in config.sections():
     margin = config["image"].getint("margin")
-    icon_path = config["image"]["icon_path"]
+    icon_path = config["image"].get("icon_path", fallback=default_icon_path)
     widget_image = widget.Image(
         margin=margin, filename=icon_path,
         mouse_callbacks={"Button1": rofi_exit})
