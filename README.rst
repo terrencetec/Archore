@@ -423,10 +423,16 @@ Alternatively, add the ``--needed`` tag to avoid reinstalling packages
 
 Enable core services
 --------------------
-Display manager
-^^^^^^^^^^^^^^^
 Use ``systemctl``
 
+Network
+^^^^^^^
+.. code-block::
+
+   sudo systemctl enable NetworkManager.service
+
+Display manager
+^^^^^^^^^^^^^^^
 .. code-block:: bash
 
    sudo systemctl enable ly.service
