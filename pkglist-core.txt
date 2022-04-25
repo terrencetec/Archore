@@ -2,6 +2,7 @@ xorg
 xdg-user-dirs
 qtile
 ly
+slock
 rxvt-unicode
 rxvt-unicode-terminfo
 urxvt-perls
@@ -9,3 +10,5 @@ urxvt-resize-font-git
 rofi
 alsa-utils
 pulseaudio
+tty-clock
+htop

@@ -398,6 +398,7 @@ Install core packages
    xdg-user-dirs  # Create folders such as Downloads, Pictures, in home directory.
    qtile  # My favorite window-tiling manager
    ly  # Display manager, i.e. login screen.
+   slock  # Display locker
    rxvt-unicode  # My favorite terminal emulator
    rxvt-unicode-terminfo
    urxvt-perls
@@ -405,3 +406,5 @@ Install core packages
    rofi  # My favorite program launcher
    alsa-utils  # Audio stuff.
    pulseaudio  # Audio stuff.
+   tty-clock  # A clock auto-launched by my qtile config
+   htop  # Process manager auto-launched by my qtile config
