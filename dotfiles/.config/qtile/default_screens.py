@@ -36,6 +36,12 @@ default_clock_fontsize = int(bar_size/4)
 default_foreground = config["widget"]["foreground"]
 default_icon_path = os.path.join(home, ".config/qtile/icon.png")
 
+widget_defaults = {
+    "font": default_font,
+    "fontsize": default_fontsize,
+    "foreground": default_foreground,
+}
+
 def rofi_exit():
     qtile.cmd_spawn(os.path.join(home, ".config/rofi/rofi-exit.sh"))
 
