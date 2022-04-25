@@ -33,7 +33,9 @@ widget_list = []
 if "image" in config.sections():
     margin = config["image"].getint("margin")
     icon_path = config["image"]["icon_path"]
-    widget_image = widget.Image(margin=margin, filename=icon_path)
+    widget_image = widget.Image(
+        margin=margin, filename=icon_path,
+        mouse_callbacks={"Button1": rofi_exit})
     widget_list.append(widget_image)
 
 if "group_box" in config.sections():
@@ -130,6 +132,15 @@ if "thermal_sensor" in config.sections():
     )
     widget_list.append(widget_thermalsensor)
 
+if "volume" in config.sections():
+    fmt = config["volume"]["fmt"]
+    volume_app = config["volume"]["volume_app"]
+    widget_volume = widget.Volume(
+        fmt=fmt,
+        volume_app=volume_app
+    )
+    widget_list.append(widget_volume)
+
 if "battery" in config.sections():
     format = config["battery"]["format"]
     discharge_char = config["battery"]["discharge_char"]
@@ -154,6 +165,7 @@ if "clock" in config.sections():
         padding=padding,
     )
     widget_list.append(widget_clock)
+
 # icon_config = {
 #     'margin': 3,
 #     'filename': icon_path,
