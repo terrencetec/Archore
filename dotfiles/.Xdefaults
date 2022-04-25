@@ -1,0 +1,57 @@
+URxvt.termName:                       rxvt
+URxvt.scrollBar:                      false
+URxvt.transparent:                    false
+URxvt.depth:                          32
+URxvt.font:                           xft:DejaVuSansMono Nerd Font:size=10
+urxvt.letterSpace:                    0
+urxvt.lineSapce:                      0
+URxvt.iso14755:                       false
+URxvt.iso14755_52:                    false
+URxvt.scrollStyle:                    plain
+URxvt.saveLines:                      8192
+URxvt.cursorBlink:                    false
+
+URxvt.color0:                         #1d1f21
+URxvt.color1:                         #cc6666
+URxvt.color2:                         #00ff66
+URxvt.color3:                         #f0c674
+URxvt.color4:                         #81a2be
+URxvt.color5:                         #b294bb
+URxvt.color6:                         #8abeb7
+URxvt.color7:                         #c5c8c6
+URxvt.color8:                         #666666
+URxvt.color9:                         #d54e53
+URxvt.color10:                        #b9ca4a
+URxvt.color11:                        #e7c547
+URxvt.color12:                        #7aa6da
+URxvt.color13:                        #c397d8
+URxvt.color14:                        #70c0b1
+URxvt.color15:                        #eaeaea
+
+URxvt.background:                     [75]#000000
+URxvt.foreground:                     #00ff66
+
+
+! Control
+URxvt.keysym.C-Up:		\033[1;5A
+URxvt.keysym.C-Down:		\033[1;5B
+URxvt.keysym.C-Right:		\033[1;5C
+URxvt.keysym.C-Left:		\033[1;5D
+
+URxvt.keysym.C-Delete:		\033[3;5~
+
+
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select,resize-font
+URxvt.url-select.launcher:  google-chrome-stable
+URxvt.url-select.underline: true
+URxvt.matcher.button: 1
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+URxvt.keysym.C-C: perl:clipboard:copy
+URxvt.keysym.C-V: perl:clipboard:paste
+
+!xscreensaver
+xscreensaver.passwd.thermometer.foreground:  #ff0000
+xscreensaver.passwd.thermometer.background:  #000000
+xscreensaver.passwd.thermometer.width:       80

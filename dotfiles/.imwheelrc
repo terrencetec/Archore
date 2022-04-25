@@ -1,0 +1,24 @@
+# Speed up scrolling for chromium and pass unchanged for zoom
+"^chromium$"
+    None, Up, Button4, 3
+    None, Down, Button5, 3
+    Shift_L,   Up,   Shift_L|Button4, 4
+    Shift_L,   Down, Shift_L|Button5, 4
+    Control_L, Up,   Control_L|Button4
+    Control_L, Down, Control_L|Button5
+
+"^google-chrome$"
+    None, Up, Button4, 3
+    None, Down, Button5, 3
+    Shift_L,   Up,   Shift_L|Button4, 4
+    Shift_L,   Down, Shift_L|Button5, 4
+    Control_L, Up,   Control_L|Button4
+    Control_L, Down, Control_L|Button5
+
+"^atom$"
+    None, Up, Button4, 3
+    None, Down, Button5, 3
+
+"^gnome-terminal$"
+    None, Up, Button4, 3
+    None, Down, Button5, 3
