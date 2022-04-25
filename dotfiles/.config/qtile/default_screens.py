@@ -27,6 +27,7 @@ def rofi_exit():
 import configparser
 config = configparser.ConfigParser(allow_no_value=True)
 config.optionxform = str
+config.read(home+"/.config/qtile/widget_config.ini")
 
 widget_list = []
 
