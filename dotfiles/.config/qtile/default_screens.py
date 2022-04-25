@@ -66,7 +66,7 @@ if "task_list" in config.sections():
         unfocused_border=unfocused_border_color,
         font=font,
         margin=margin,
-        max_title_width=max_titlewidth,
+        max_title_width=max_title_width,
         padding=padding,
         rounded=rounded
     )
