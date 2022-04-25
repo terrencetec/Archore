@@ -493,15 +493,26 @@ Do this with caution as it overwrites the original dotfiles.
 
 The dotfiles directory contains
 
-- ``.bashrc``  # BASH initiation script
-- ``.xprofile``  # Shell scripts for autostarting
-- ``.Xdefaults``  # Configurations for urxvt and others. Notice other dependencies.
-- ``.Xresources``  # Other configurations, cursors, etc...
-- ``.vimrc``  # Configuration for vim. Remember to install extensions.
-- ``.inputrc``  # My skipword shortcut.
-- ``imwheelrc``  # IMWheel config. Install ``imwheel`` for this to take effect.
-- ``.config/``  # .config directory containing
-  - ``chrome-flags.conf``  # Chrome config to avoid dropdown menus issues.
-  - ``qtile/``  # Qtile configs.
-  - ``picom/``  # Picom configs. Install ``picom`` for this to take effect.
-  - ``rofi/``  # Rofi configs.
+- ``.bashrc`` BASH initiation script
+- ``.xprofile`` Shell scripts for autostarting
+- ``.Xdefaults`` Configurations for urxvt and others. Notice other dependencies.
+- ``.Xresources`` Other configurations, cursors, etc...
+- ``.vimrc`` Configuration for vim. Remember to install extensions.
+- ``.inputrc`` My skipword shortcut.
+- ``imwheelrc`` IMWheel config. Install ``imwheel`` for this to take effect.
+- ``.config/`` Configuration directory containing.
+   - ``chrome-flags.conf`` Chrome config to avoid dropdown menus issues.
+   - ``qtile/`` Qtile configuration directory.
+   - ``picom/`` Picom configuration directory. Install ``picom`` for this to take effect.
+   - ``rofi/`` Rofi configuration directory.
+
+Edit configurations
+^^^^^^^^^^^^^^^^^^^
+Qtile
+#####
+Ly
+##
+slock
+#####
+
+...
