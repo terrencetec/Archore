@@ -465,6 +465,17 @@ For LTS kernels, also install ``nvidia-lts``
 .. code-block::
 
    paru nvidia-lts
+
+Or use the package lists in the repository.
+
+.. code-block::
+
+   paru -S - < pkglist-amdgpu.txt
+
+.. code-block::
+
+   paru -S - <pkglist-nvidia.txt
+
 Enable core services
 --------------------
 Use ``systemctl``
