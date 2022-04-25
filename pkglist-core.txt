@@ -10,5 +10,3 @@ urxvt-resize-font-git
 rofi
 alsa-utils
 pulseaudio
-tty-clock
-htop
