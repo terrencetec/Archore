@@ -432,7 +432,37 @@ Optionally, install required Python packages for qtile.
 
    pip install iwlib psutils
 
+(Optional) Enable ``multilib``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+| Edit ``/etc/pacman.conf``.
+| Uncomment the following lines (around line 94-95)
 
+.. code-block::
+   
+   [multilib]
+   Include = /etc/pacman.d/mirrorlist
+
+Graphics card driver
+^^^^^^^^^^^^^^^^^^^^
+
+| In addition, install graphics card driver.
+| For AMD GPUs:
+
+.. code-block:: bash
+
+   paru mesa xf86-video-amdgpu vulkan-radeon libva-mesa-driver lib32-mesa lib32-vulkan-radeon lib32-libva-mesa-driver
+
+For Nvidia GPUs:
+
+.. code-block::
+
+   paru nvidia lib32-nvidia-utils
+
+For LTS kernels, also install ``nvidia-lts``
+
+.. code-block::
+
+   paru nvidia-lts
 Enable core services
 --------------------
 Use ``systemctl``
