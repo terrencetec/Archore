@@ -3,6 +3,7 @@ xdg-user-dirs
 qtile
 ly
 slock
+xss-lock
 rxvt-unicode
 rxvt-unicode-terminfo
 urxvt-perls
