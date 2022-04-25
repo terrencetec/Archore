@@ -434,6 +434,8 @@ Optionally, install required Python packages for qtile.
 
 (Optional) Enable ``multilib``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+| This enables 32-bit stuff, ``steam``, ``lib32-*``, etc...
+| If this is not enabled, packages containing ``lib32-`` prefix cannot be found when attempting to install them.
 | Edit ``/etc/pacman.conf``.
 | Uncomment the following lines (around line 94-95)
 
