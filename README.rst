@@ -430,7 +430,7 @@ Optionally, install required Python packages for qtile.
 
 .. code-block::
 
-   pip install iwlib psutils
+   pip install iwlib psutil screeninfo
 
 (Optional) Enable ``multilib``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
