@@ -155,14 +155,15 @@ Use reflector
 .. code-block:: bash
 
    reflector --country country --protocol https --sort score --save \etc\pacman.d\mirrorlist
-   
+
 | Replace ``country`` with a comma separated list, e.g. ``Hong\ Kong,Japan``.
 | To get a list of countries, run
 
 .. code-block:: bash
 
    reflector --list-countries | less
-   
+
+
 Install essential packages
 --------------------------
 Use pacstrap
@@ -406,5 +407,26 @@ Install core packages
    rofi  # My favorite program launcher
    alsa-utils  # Audio stuff.
    pulseaudio  # Audio stuff.
-   tty-clock  # A clock auto-launched by my qtile config
-   htop  # Process manager auto-launched by my qtile config
+
+Install them using ``paru``.
+
+.. code-block:: bash
+   
+   cd Arch-core
+   paru -S - < pkglist-core.txt
+
+Alternatively, add the ``--needed`` tag to avoid reinstalling packages
+
+.. code-block:: bash
+
+   paru -S --needed < pkglist-core.txt
+
+Enable core services
+--------------------
+Display manager
+^^^^^^^^^^^^^^^
+Use ``systemctl``
+
+.. code-block:: bash
+
+   sudo systemctl enable ly.service
