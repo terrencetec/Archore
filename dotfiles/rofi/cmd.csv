@@ -1,5 +1,0 @@
-0) Return
-1) Lock, 'xscreensaver-command -l'
-2) Logout, 'qtile cmd-obj -o cmd -f shutdown'
-3) Reboot, 'reboot'
-4) Shutdown, 'shutdown now'
