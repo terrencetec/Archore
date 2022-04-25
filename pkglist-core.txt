@@ -1,6 +1,7 @@
 xorg
 xdg-user-dirs
 qtile
+python-pip
 ly
 slock
 xss-lock

@@ -398,8 +398,11 @@ Install core packages
    xorg  # The display server.
    xdg-user-dirs  # Create folders such as Downloads, Pictures, in home directory.
    qtile  # My favorite window-tiling manager
+   python-pip  # Python package manager.
+   wireless_tools  # For my qtile's wlan widget.
    ly  # Display manager, i.e. login screen.
    slock  # Display locker
+   xss-lock  # X session locker 
    rxvt-unicode  # My favorite terminal emulator
    rxvt-unicode-terminfo
    urxvt-perls
@@ -421,6 +424,15 @@ Alternatively, add the ``--needed`` tag to avoid reinstalling packages
 
    paru -S --needed < pkglist-core.txt
 
+Python dependencies for my qtile configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Optionally, install required Python packages for qtile.
+
+.. code-block::
+
+   pip install iwlib psutils
+
+
 Enable core services
 --------------------
 Use ``systemctl``
@@ -436,3 +448,8 @@ Display manager
 .. code-block:: bash
 
    sudo systemctl enable ly.service
+
+Configurations for core programs
+-------------------------------
+Do something
+
