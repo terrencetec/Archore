@@ -51,8 +51,8 @@ if "image" in config.sections():
 
 if "group_box" in config.sections():
     active_color = config["group_box"]["active_color"]
-    block_highlight_text_color = (
-        config["group_box"]["block_highlight_text_color"])
+    block_highlight_text_color = config["group_box"].get(
+        "block_highlight_text_color", fallback=default_foreground)
     borderwidth = config["group_box"].getint("borderwidth")
     highlight_method = config["group_box"]["highlight_method"]
     widget_groupbox = widget.GroupBox(
