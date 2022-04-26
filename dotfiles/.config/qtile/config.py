@@ -34,9 +34,9 @@ from libqtile.lazy import lazy
 
 from default_variables import mod, terminal
 from default_keys import keys
-from default_layouts import layouts
+from layouts import layouts
 from default_groups import groups
-from default_screens import screens, widget_defaults
+from screens import screens, widget_defaults
 
 
 # Custom things.

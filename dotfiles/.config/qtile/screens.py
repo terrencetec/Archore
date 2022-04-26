@@ -1,52 +1,76 @@
+"""Setup screen, bar, and widgets.
+
+Do not hardcode any configuration values in this file.
+Instead, modify "config.ini".
+"""
 import os
+import configparser
 
-from screeninfo import get_monitors
-
-for monitor in get_monitors():
-    if monitor.is_primary:
-        screen_width = monitor.width
-        screen_height = monitor.height
+from _get_screensize import _get_resolution 
 
 from libqtile import bar, widget, qtile
 from libqtile.config import Screen
 from libqtile.lazy import lazy
 
-from default_variables import (
-    home, wlan_interface, tag_sensor, font, font_size, bar_size,
-    trayicon_multiplier, clock_font_multiplier, terminal_green,
-    battery_widget, icon_path, bar_opacity
-)
-
+# Get home string
 path_home = os.path.expanduser("~")
 
-import configparser
+# Get monitor resolution
+screen_width, screen_height = _get_resolution()
+
+# Determine optimal sizes for the bar.
+# For 2560x1440, my bar size was 32.
+# Font size was 18, giving a ratio of font to bar size of 0.5625.
+# Systray icon size has a multiplier of 3/4 so it was 24.
+# Clock font size has a multiplier of 1/2 so it was 9.
+default_barsize = int(screen_height/1440*32)
+default_fontsize = int(default_barsize*0.5625)
+default_iconsize = int(default_fontsize*3/4)
+default_clock_fontsize = int(default_fontsize*1/2)
+
+# Config
 config = configparser.ConfigParser(allow_no_value=True)
 config.optionxform = str
 path_config = os.path.join(path_home, ".config/qtile/config.ini")
+
+# For debugging
+if not os.path.exists(path_config):
+    path_config = "config.ini"  # When executing from the directory.
+
 config.read(path_config)
-print(path_config)
 
-bar_size = config["bar"].getint("size", fallback=int(screen_height/45))
-background = config["bar"]["background"] 
-opacity = config["bar"].getfloat("opacity")
 
+# Parsing the config
+bar_size = config["bar"].getint("size", fallback=default_barsize)
+background = config["bar"]["background"]  # background color or the bar.
+opacity = config["bar"].getfloat("opacity")  # opacity of the bar
+
+# Default variables.
 default_font = config["widget"]["font"]
-default_fontsize = config["widget"].getint("fontsize", fallback=int(bar_size/2))
-default_clock_fontsize = int(bar_size/4)
+default_fontsize = config["widget"].getint(
+    "fontsize", fallback=default_fontsize)
 default_foreground = config["widget"]["foreground"]
-default_icon_path = os.path.join(home, ".config/qtile/icon.png")
+default_icon_path = os.path.join(path_home, ".config/qtile/icon.png")
+if not os.path.exists(default_icon_path):
+    default_icon_path = "icon.png"  # When executing from the directory.
+    # For debug only.
 
+# Required for config.py, somehow...
 widget_defaults = {
     "font": default_font,
     "fontsize": default_fontsize,
     "foreground": default_foreground,
 }
 
+
+# Command for the rofi launcher.
 def rofi_exit():
     qtile.cmd_spawn(os.path.join(home, ".config/rofi/rofi-exit.sh"))
 
+
 widget_list = []
 
+# Scan config and set up widgets.
 if "image" in config.sections():
     margin = config["image"].getint("margin")
     icon_path = config["image"].get("icon_path", fallback=default_icon_path)
@@ -99,7 +123,8 @@ if "prompt" in config.sections():
     widget_list.append(widget.Prompt())
 
 if "systray" in config.sections():
-    icon_size = config["systray"].getint("icon_size")
+    icon_size = config["systray"].getint(
+        "icon_size", fallback=default_iconsize)
     widget_systray = widget.Systray(
         icon_size=icon_size,
     )
@@ -185,7 +210,6 @@ if "clock" in config.sections():
     )
     widget_list.append(widget_clock)
 
-
 screens = [
-    Screen(bottom=bar.Bar(widget_list, size=bar_size, opacity=bar_opacity)),
+    Screen(bottom=bar.Bar(widget_list, size=bar_size, opacity=opacity)),
 ]
