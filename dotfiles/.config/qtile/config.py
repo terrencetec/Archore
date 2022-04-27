@@ -35,7 +35,7 @@ from libqtile.lazy import lazy
 from default_variables import mod, terminal
 from default_keys import keys
 from layouts import layouts
-from default_groups import groups
+from groups import groups
 from screens import screens, widget_defaults
 
 
