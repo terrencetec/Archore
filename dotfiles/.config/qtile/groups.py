@@ -1,7 +1,6 @@
 import configparser
 import os
 
-from libqtile.lazy import lazy
 from libqtile.config import Group
 
 
