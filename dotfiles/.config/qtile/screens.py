@@ -65,7 +65,7 @@ widget_defaults = {
 
 # Command for the rofi launcher.
 def rofi_exit():
-    qtile.cmd_spawn(os.path.join(home, ".config/rofi/rofi-exit.sh"))
+    qtile.cmd_spawn(os.path.join(path_home, ".config/rofi/rofi-exit.sh"))
 
 
 widget_list = []
