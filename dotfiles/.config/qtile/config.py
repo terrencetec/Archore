@@ -11,12 +11,12 @@ from libqtile import layout, hook
 from libqtile.config import Click, Drag, Match
 from libqtile.lazy import lazy
 
-from _floating_layout import floating_layout
-from _groups import groups
-from _keys import keys
-from _layouts import layouts
-from _mouse import mouse
-from _screens import screens, widget_defaults
+from floating_layout import floating_layout
+from groups import groups
+from keys import keys
+from layouts import layouts
+from mouse import mouse
+from screens import screens, widget_defaults
 
 
 path_home = os.path.expanduser('~')
