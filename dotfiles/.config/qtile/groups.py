@@ -17,7 +17,8 @@ groups = []
 for workspace in config.sections():
     # The section name is the name of the workspace
     name = workspace
-    spawn = config[workspace]["launch"]
+    launch = config[workspace]["launch"]
+    spawn = launch.split("&")
     layout = config[workspace]["layout"]
 
     groups.append(Group(name=name, spawn=spawn, layout=layout))
