@@ -5,8 +5,6 @@ from libqtile import layout
 
 from _get_screensize import _get_resolution
 
-from default_variables import layout_margin, layout_ratio
-
 
 path_home = os.path.expanduser("~")
 path_config = os.path.join(path_home, ".config/qtile/config.ini")
