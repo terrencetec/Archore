@@ -111,7 +111,6 @@ def add_shortcut(shortcuts, command, keys=None, desc="", **kwargs):
     # Handle multiple shortcut.
     for shortcut in shortcuts.split("or"):
         modifiers, key = decipher_shortcut(shortcut, **kwargs)
-        print(modifiers, key, desc)
         keys.append(
             Key(modifiers, key, command, desc=desc)
         )
@@ -185,13 +184,13 @@ keys = add_shortcut(
 
 shortcuts = keys_config["layout"]["shuffle left"]
 command = lazy.layout.swap_left()
-desc = "Move window below"
+desc = "Move window left"
 keys = add_shortcut(
     shortcuts=shortcuts, command=command, desc=desc, keys=keys, mod=mod)
 
 shortcuts = keys_config["layout"]["shuffle right"]
 command = lazy.layout.swap_right()
-desc = "Move window below"
+desc = "Move window right"
 keys = add_shortcut(
     shortcuts=shortcuts, command=command, desc=desc, keys=keys, mod=mod)
 
