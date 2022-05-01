@@ -226,13 +226,13 @@ keys = add_shortcut(
     shortcuts=shortcuts, command=command, desc=desc, keys=keys, mod=mod)
 
 shortcuts = keys_config["layout"]["next layout"]
-command = lazy.layout.next_layout()
+command = lazy.next_layout()
 desc = "Next layout"
 keys = add_shortcut(
     shortcuts=shortcuts, command=command, desc=desc, keys=keys, mod=mod)
 
 shortcuts = keys_config["layout"]["prev layout"]
-command = lazy.layout.prev_layout()
+command = lazy.prev_layout()
 desc = "Previous layout"
 keys = add_shortcut(
     shortcuts=shortcuts, command=command, desc=desc, keys=keys, mod=mod)
