@@ -1,30 +1,23 @@
-# export XMODIFIERS=@im=gcin
-# export LC_CTYPE=zh_TW.UTF-8
-# gcin &
-
 export TERM=rxvt
 export EDITOR=vim
 
 # Set cursor size
 xrdb ~/.Xresources
 
-# Disable power saver
-xset -dpms
+# Power saver
+xset dpms 900 900 0
 
 # Disable screen-saver
 xset s off
 
-# xscreensaver
-xscreensaver --no-splash &
+# Lockscreen
+xss-lock slock &
 
 # Set middle button scrolling speed
 imwheel
 
 # Start ibus input method
 ibus-daemon &
-
-# Start NetworkManager applet (Experimenting to see if it fixes random disconnections)
-nm-applet &
 
 # Start dropbox
 dropbox &
@@ -33,8 +26,6 @@ dropbox &
 variety &
 
 # Compositor
-# picom --backend glx --refresh-rate 60 -e 0.5 --opacity-rule "95:class_g='Atom'" --glx-no-stencil &
-# Use .config/picom/picom.conf instead.
 picom &
 
 # Redshift
