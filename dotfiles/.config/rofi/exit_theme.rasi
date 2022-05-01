@@ -18,7 +18,7 @@
    blackselect:      #303030;
    darkgray:         #848484;
    scrollbarcolor:   #505050;
-   font: "monospace 16";
+   font: "DejavuSansMono Nerd Font 16";
    background-color: @blackdarkest;
 }
 
