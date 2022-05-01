@@ -19,8 +19,9 @@ for workspace in config.sections():
     name = workspace
     launch = config[workspace]["launch"]
     spawn = launch.split("&")
+    if "" in spawn:  # spawn = [""] causes error in Qtile.
+        spawn = ""  # spawn = "" does not.
     layout = config[workspace]["layout"]
-
     groups.append(Group(name=name, spawn=spawn, layout=layout))
 
 # initial_group = Group(
