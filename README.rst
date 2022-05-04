@@ -444,6 +444,24 @@ Optionally, install required Python packages for qtile.
    [multilib]
    Include = /etc/pacman.d/mirrorlist
 
+(Optional) Core applications and eye candy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Install applications listed in ``pkglist-core-applications.txt`` and
+``pkglist-core-eyecandy.txt``.
+
+.. code-block::
+
+   paru -S - < pkglist-core-applications.txt
+
+.. code-block::
+
+   paru -S - < pkglist-core-eyecandy.txt
+
+The system doesn't require these applications and utilities to function.
+However, some :ref:`configuration files <Configurations for core programs`
+of the core programs are build around these applications and utilities.
+So, it's best if these applications are installed as well.
+
 Graphics card driver
 ^^^^^^^^^^^^^^^^^^^^
 
