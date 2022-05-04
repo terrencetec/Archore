@@ -1,0 +1,7 @@
+variety
+picom
+reshift
+htop
+tty-clock
+mcmojave-cursors
+xcb-util-cursor
