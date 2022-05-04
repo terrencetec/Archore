@@ -1,0 +1,8 @@
+dotfiles/.bashrc
+dotfiles/.vimrc
+dotfiles/.xprofile
+dotfiles/.config/picom/*
+dotfiles/.config/qtile/*.py
+dotfiles/.config/rofi/*.rasi
+dotfiles/.config/rofi/rofi-exit.sh
+dotfiles/.config/chrome-flags.conf

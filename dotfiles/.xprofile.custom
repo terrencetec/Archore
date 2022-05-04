@@ -1,0 +1,12 @@
+# ~/.xprofile.custom
+# Acrhore .xprofile
+# Modify this file instead of ~/.xprofile
+
+# Power saver
+xset dpms 900 900 0
+
+# Disable screen-saver
+xset s off
+
+# Redshift
+redshift -O 6000

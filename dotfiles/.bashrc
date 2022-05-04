@@ -33,8 +33,8 @@ alias ll='ls -alF'
 alias la='ls -a'
 alias l='ls -CF'
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.bashrc.custom ]; then
+    . ~/.bashrc.custom
 fi
 
 

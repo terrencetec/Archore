@@ -4,12 +4,6 @@ export EDITOR=vim
 # Set cursor size
 xrdb ~/.Xresources
 
-# Power saver
-xset dpms 900 900 0
-
-# Disable screen-saver
-xset s off
-
 # Lockscreen
 xss-lock slock &
 
@@ -28,5 +22,4 @@ variety &
 # Compositor
 picom &
 
-# Redshift
-redshift -O 6000
+~/.xprofile.custom &
