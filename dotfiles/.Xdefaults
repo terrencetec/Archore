@@ -2,7 +2,7 @@ URxvt.termName:                       rxvt
 URxvt.scrollBar:                      false
 URxvt.transparent:                    false
 URxvt.depth:                          32
-URxvt.font:                           xft:DejaVuSansMono Nerd Font:size=10
+URxvt.font:                           xft:DejaVuSansMono Nerd Font:size=15
 urxvt.letterSpace:                    0
 urxvt.lineSapce:                      0
 URxvt.iso14755:                       false
@@ -50,8 +50,3 @@ URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
 URxvt.keysym.C-C: perl:clipboard:copy
 URxvt.keysym.C-V: perl:clipboard:paste
-
-!xscreensaver
-xscreensaver.passwd.thermometer.foreground:  #ff0000
-xscreensaver.passwd.thermometer.background:  #000000
-xscreensaver.passwd.thermometer.width:       80
