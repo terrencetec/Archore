@@ -458,7 +458,7 @@ Install applications listed in ``pkglist-core-applications.txt`` and
    paru -S - < pkglist-core-eyecandy.txt
 
 The system doesn't require these applications and utilities to function.
-However, some `configuration files <Configurations for core programs>`_
+However, some `configuration files <https://github.com/terrencetec/Arch-core/blob/master/README.rst#configurations-for-core-programs>`_
 of the core programs are build around these applications and utilities.
 So, it's best if these applications are installed as well.
 
