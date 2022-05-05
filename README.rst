@@ -2,6 +2,9 @@ Arch-core
 ==========
 Core scripts, templates, configuration files, and instructions for setting up my Arch Linux.
 
+.. contents::
+   :depth: 2
+   
 Installation
 ============
 | Follow the instructions below.
@@ -75,7 +78,7 @@ Operating system drive
 +-----------+-------------------+----------------------------+
 |[SWAP]     |Linux swap         |The size of physical ram    |
 +-----------+-------------------+----------------------------+
-|/          |Linux root (x86-64)|Reminder                    |
+|/          |Linux root (x86-64)|Remainder                   |
 +-----------+-------------------+----------------------------+
 
 Storage drive
@@ -83,9 +86,9 @@ Storage drive
 +-------------+-----------------------+----------------------------+
 |mount point  |partition type         |size                        |
 +=============+=======================+============================+
-|/storage     |Linux filesystem       |Reminder                    |
+|/storage     |Linux filesystem       |Remainder                   |
 +-------------+-----------------------+----------------------------+
-|/storage2    |Microsoft storage space|Reminder                    |
+|/storage2    |Microsoft storage space|Remainder                   |
 +-------------+-----------------------+----------------------------+
 
 Formatting
@@ -386,34 +389,30 @@ Or, use ssh if you are me. In this case, generate ssh-key and upload it to GitHu
 
 .. code-block:: bash
 
-   git@github.com:terrencetec/Arch-core.git
+   git clone git@github.com:terrencetec/Arch-core.git
    
 Install core packages
 ---------------------
 | The core packages of my Linux system is listed in ``pkglist-core.txt``.
 | It contains
+.. code-block:: bash
 
-.. include:: pkglist-core.txt
-   :literal:
-
-..
-   .. code-block:: bash
-
-      xorg  # The display server.
-      xdg-user-dirs  # Create folders such as Downloads, Pictures, in home directory.
-      qtile  # My favorite window-tiling manager
-      python-pip  # Python package manager.
-      wireless_tools  # For my qtile's wlan widget.
-      ly  # Display manager, i.e. login screen.
-      slock  # Display locker
-      xss-lock  # X session locker 
-      rxvt-unicode  # My favorite terminal emulator
-      rxvt-unicode-terminfo
-      urxvt-perls
-      urxvt-resize-font-git
-      rofi  # My favorite program launcher
-      alsa-utils  # Audio stuff.
-      pulseaudio  # Audio stuff.
+   xorg  # The display server.
+   xdg-user-dirs  # Create folders such as Downloads, Pictures, in home directory.
+   qtile  # My favorite window-tiling manager
+   python-pip  # Python package manager.
+   wireless_tools  # For my qtile's wlan widget.
+   ly  # Display manager, i.e. login screen.
+   slock  # Display locker
+   xss-lock  # X session locker 
+   rxvt-unicode  # My favorite terminal emulator
+   rxvt-unicode-terminfo
+   urxvt-perls
+   urxvt-resize-font-git
+   rofi  # My favorite program launcher
+   alsa-utils  # Audio stuff.
+   pulseaudio  # Audio stuff.
+   pavucontrol # Audio stuff
 
 Install them using ``paru``.
 
@@ -443,28 +442,70 @@ Optionally, install required Python packages for qtile.
 | Edit ``/etc/pacman.conf``.
 | Uncomment the following lines (around line 94-95)
 
-.. code-block::
+.. code-block:: bash
    
-   [multilib]
-   Include = /etc/pacman.d/mirrorlist
+      [multilib]
+      Include = /etc/pacman.d/mirrorlist
 
-(Optional) Core applications and eye candy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Install applications listed in ``pkglist-core-applications.txt`` and
+(Optional) Core applications, fonts, and eye candy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Install applications listed in ``pkglist-core-applications.txt``, ``pkglist-core-fonts``, and
 ``pkglist-core-eyecandy.txt``.
 
-.. code-block::
+.. code-block:: bash
 
    paru -S - < pkglist-core-applications.txt
 
-.. code-block::
+.. code-block:: bash
+   
+   paru -S - < pkglist-core-fonts.txt
+   
+.. code-block:: bash
 
    paru -S - < pkglist-core-eyecandy.txt
+
+The ``pkglist-core-applications.txt`` list contains
+
+.. code-block:: bash
+
+   imwheel
+   google-chrome
+   shutter
+   xbacklight
+   ibus
+   ibus-table-chinese
+   dropbox
+   signal-desktop
+   lm-sensors
+
+The ``pkglist-core-fonts.txt`` list containts
+
+.. code-block:: bash
+
+   nerd-fonts-dejavu-complete
+   adobe-source-han-sans-otc-fonts
+   adobe-source-han-serif-otc-fonts
+   tty-joypixels
+   
+And, the ``pkglist-core-eyecandy.txt`` list contains
+
+.. code-block:: bash
+
+   variety
+   picom
+   reshift
+   htop
+   tty-clock
+   mcmojave-cursors
+   xcb-util-cursor  # Required by Qtile
 
 The system doesn't require these applications and utilities to work.
 However, some `configuration files <https://github.com/terrencetec/Arch-core/blob/master/README.rst#configurations-for-core-programs>`_
 of the core programs were built around these applications and utilities.
 So, it's best if these applications are installed as well.
+
+Remember to setup ``ibus``, ``dropbox`` and ``variety``.
+For ``variety``, I use my Arch wallpapers in ``Dropbox/wallpapers/``.
 
 Graphics card driver
 ^^^^^^^^^^^^^^^^^^^^
@@ -533,8 +574,8 @@ The ``dotfiles`` directory contains
    - ``rofi/`` Rofi configuration directory.
    - ``chrome-flags.conf`` Chrome config.
 - ``icons/`` Icons.
-  - ``default`` Defaults.
-    ``index.theme`` Cursor theme.
+   - ``default/`` Defaults.
+      -``index.theme`` Cursor theme.
      
 
 Link/copy configuration files
@@ -542,17 +583,93 @@ Link/copy configuration files
 There are two types of configuration files in the ``dotfiles`` directory.
 
 1. Configuration files that are meant to be user-edited.
-2. Configuration files that are not supposed to be touched.
+2. Configuration files that are not supposed to be modified.
 
-For user-defined configuration files,
+User-defined configuration files are supposed to be edited by the users according to their system and likings.
+These files contain system-specific configurations that cannot be shared across computers.
+Therefore, these files shouldn't be linked to the user's home directory.
+Instead, they are copied from the repository to the home directory.
+And if the files existed in the home directory, they should be merged manually.
+The repository contains a script called ``copy-dotfiles.sh`` that copies configuration files from the list ``dotfiles-copy-list.txt``.
+To run it, simply type
+
+.. code-block:: bash
+
+   ./copy-dotfiles.sh
+
+It copies the required configuration dotfiles to the user's home directions or create files with ``.merge`` extension if the configuration
+files already existed.
+To merge the files, use an editor to edit the ``*.merge files`` and use ``mv`` to replace the original file, for example:
+
+.. code-block:: bash
+
+   mv .myconfig.merge .myconfig
+
+For configuration files that aren't supposed to be modified, they can be linked to the home directory using the script ``link-dotfiles.sh``.
+
+.. code-block:: bash
+
+   ./link-dotfiles.sh
+   
+**Caution**, it creates numbered backup files before linking the configuration files.
+
+Therefore, if you don't want the home directory to contain a lot of backup files, **use this script once only**.
+These configuration files will be automatically update when you pull from the origin.
 
 Edit configurations
 ^^^^^^^^^^^^^^^^^^^
+Feel free to modify any files as listed in ``dotfiles-copy-list.txt``.
+
+However, there are several settings in the configurations in the dotfiles that needed user input for things to work properly.
+
+**Note**: Do not modify the configuration files in the cloned repository.
+Instead, modify those already linked/copied to your home directory.
+
 Qtile
 #####
-Ly
-##
-slock
-#####
+CPU temperature sensor and WiFi interface
+Modify ``~/.config/qtile/config.ini``
 
-...
+.. code-block:: bash
+
+   # ~/.config/qtile/config.ini
+   ...
+   [wlan]
+   interface = wlp3s0  # Use ip addr or nmcli command to find your WiFi interface and put it here.
+   ...
+   [thermal sensor]
+   tag_sensor = Package id 0  # Use sensors command to find the sensor tag of the CPU temperature sensor. Requires the lm-sensors package.
+   ...
+
+You don't need to modify other ``.ini`` files for Qtile to work.
+But, if you wish, modify other values as well.
+
+(optional) Ly
+#############
+To change the foreground color, modify ``/etc/ly/config.ini``.
+
+.. code-block:: bash
+
+   # /etc/ly/config.ini
+   ...
+   term_reset_cmd = /usr/bin/tput reset; /usr/bin/printf/ "%b" "\e]P700FF66\ec"
+   ...
+
+Here, at the last bit of this config, ``P7`` refers to the foreground color and ``00FF66`` is the HEX value of my favorite terminal green color.
+
+In addition, modify ``/usr/lib/systemd/system/ly.service``.
+
+.. code-block:: bash
+
+   # /usr/lib/systemd/system/ly.service
+   ...
+   [Service]
+   ...
+   ExecStartPre=/usr/bin/printf "%%b" "\e[P700FF66\ec"  # Add this line.
+   EXecStart=.....
+   ...
+
+Install optional packages
+-------------------------
+Install optional packages in ``pkglist-optional.txt``
+Here are applications that I use, but may not be necessary.
