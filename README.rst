@@ -393,23 +393,27 @@ Install core packages
 | The core packages of my Linux system is listed in ``pkglist-core.txt``.
 | It contains
 
-.. code-block:: bash
+.. include:: pkglist-core.txt
+   :literal:
 
-   xorg  # The display server.
-   xdg-user-dirs  # Create folders such as Downloads, Pictures, in home directory.
-   qtile  # My favorite window-tiling manager
-   python-pip  # Python package manager.
-   wireless_tools  # For my qtile's wlan widget.
-   ly  # Display manager, i.e. login screen.
-   slock  # Display locker
-   xss-lock  # X session locker 
-   rxvt-unicode  # My favorite terminal emulator
-   rxvt-unicode-terminfo
-   urxvt-perls
-   urxvt-resize-font-git
-   rofi  # My favorite program launcher
-   alsa-utils  # Audio stuff.
-   pulseaudio  # Audio stuff.
+..
+   .. code-block:: bash
+
+      xorg  # The display server.
+      xdg-user-dirs  # Create folders such as Downloads, Pictures, in home directory.
+      qtile  # My favorite window-tiling manager
+      python-pip  # Python package manager.
+      wireless_tools  # For my qtile's wlan widget.
+      ly  # Display manager, i.e. login screen.
+      slock  # Display locker
+      xss-lock  # X session locker 
+      rxvt-unicode  # My favorite terminal emulator
+      rxvt-unicode-terminfo
+      urxvt-perls
+      urxvt-resize-font-git
+      rofi  # My favorite program launcher
+      alsa-utils  # Audio stuff.
+      pulseaudio  # Audio stuff.
 
 Install them using ``paru``.
 
@@ -457,9 +461,9 @@ Install applications listed in ``pkglist-core-applications.txt`` and
 
    paru -S - < pkglist-core-eyecandy.txt
 
-The system doesn't require these applications and utilities to function.
+The system doesn't require these applications and utilities to work.
 However, some `configuration files <https://github.com/terrencetec/Arch-core/blob/master/README.rst#configurations-for-core-programs>`_
-of the core programs are build around these applications and utilities.
+of the core programs were built around these applications and utilities.
 So, it's best if these applications are installed as well.
 
 Graphics card driver
@@ -512,31 +516,35 @@ Display manager
 
 Configurations for core programs
 -------------------------------
-Copy dotfiles from the repository to home directory.
+The ``dotfiles`` directory contains
 
-.. code-block::
-
-   cp dotfiles/.* ~ -r
-
-Do this with caution as it overwrites the original dotfiles.
-
-The dotfiles directory contains
-
-- ``.bashrc`` BASH initiation script
-- ``.xprofile`` Shell scripts for autostarting
-- ``.Xdefaults`` Configurations for urxvt and others. Notice other dependencies.
+- ``.bashrc`` Default bash initiation script
+- ``.bashrc.custom`` User-defined bash initiation script.
+- ``.xprofile`` Default autostart script. 
+- ``.xprofile.custom`` User-defined autostart script.
+- ``.Xdefaults`` Configurations for urxvt and others.
 - ``.Xresources`` Other configurations, cursors, etc...
 - ``.vimrc`` Configuration for vim. Remember to install extensions.
-- ``.inputrc`` My skipword shortcut.
 - ``imwheelrc`` IMWheel config. Install ``imwheel`` for this to take effect.
 - ``.config/`` Configuration directory containing.
-   - ``chrome-flags.conf`` Chrome config to avoid dropdown menus issues.
-   - ``qtile/`` Qtile configuration directory.
+   - ``gtk-3.0/`` Constains cursor theme settings
    - ``picom/`` Picom configuration directory. Install ``picom`` for this to take effect.
+   - ``qtile/`` Qtile configuration directory.
    - ``rofi/`` Rofi configuration directory.
+   - ``chrome-flags.conf`` Chrome config.
+- ``icons/`` Icons.
+  - ``default`` Defaults.
+    ``index.theme`` Cursor theme.
+     
 
 Link/copy configuration files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+There are two types of configuration files in the ``dotfiles`` directory.
+
+1. Configuration files that are meant to be user-edited.
+2. Configuration files that are not supposed to be touched.
+
+For user-defined configuration files,
 
 Edit configurations
 ^^^^^^^^^^^^^^^^^^^
