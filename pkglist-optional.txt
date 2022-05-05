@@ -10,3 +10,4 @@ textext-git
 inkscape
 smartmontools
 remmina
+timeshift
