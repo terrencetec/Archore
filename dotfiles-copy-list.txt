@@ -5,5 +5,6 @@ dotfiles/.xprofile.custom
 dotfiles/.Xresources
 dotfiles/.config/gtk-3.0/settings.ini
 dotfiles/.config/qtile/*.ini
+dotfiles/.config/qtile/icon.png
 dotfiles/.config/rofi/cmd.csv
 dotfiles/.icons/default/index.theme

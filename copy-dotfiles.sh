@@ -7,15 +7,33 @@ while read line;
 do
 	for path in $BASEDIR/$line;
 	do
-		TARGET=$path
-		DESTINATION=$(echo $TARGET | sed "s|$BASEDIR/dotfiles|$HOME|")
-		DESTINATION_DIR=$(dirname "$DESTINATION")
-		if [ ! -d $DESTINATION_DIR ];
+		SOURCE=$path
+		DEST=$(echo $SOURCE | sed "s|$BASEDIR/dotfiles|$HOME|")
+		DESTDIR=$(dirname "$DEST")
+		if [ ! -d $DESTDIR ];
 		then
 			echo 
-			mkdir -pv $DESTINATION_DIR
+			mkdir -pv $DESTDIR
 		fi
-		echo $TARGET
-		echo $DESTINATION
+		if [ -f $DEST ];
+		then
+			if [[ $SOURCE == *.png ]];
+			then
+				echo $DEST exists but cannot be merged. Ignoring.
+			else
+				echo $DEST exists.
+				DIFF=$(diff $DEST $SOURCE)
+				if [ "$DIFF" != "" ]
+				then
+					MERGE=$DEST.merge
+					echo Created $MERGE instead. Please manually merge the files.
+					diff -U 999 $DEST $SOURCE > $MERGE
+				else
+					echo $DEST and $SOURCE are identical. Ignoring.
+				fi
+			fi
+		else
+			cp -v $SOURCE $DEST --backup=numbered
+		fi
 	done
 done < $BASEDIR/dotfiles-copy-list.txt
