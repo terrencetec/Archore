@@ -458,7 +458,7 @@ Install applications listed in ``pkglist-core-applications.txt`` and
    paru -S - < pkglist-core-eyecandy.txt
 
 The system doesn't require these applications and utilities to function.
-However, some :ref:`configuration files <Configurations for core programs`
+However, some `configuration files <Configurations for core programs>`_
 of the core programs are build around these applications and utilities.
 So, it's best if these applications are installed as well.
 
@@ -492,7 +492,7 @@ Or use the package lists in the repository.
 
 .. code-block::
 
-   paru -S - <pkglist-nvidia.txt
+   paru -S - < pkglist-nvidia.txt
 
 Enable core services
 --------------------
@@ -534,6 +534,9 @@ The dotfiles directory contains
    - ``qtile/`` Qtile configuration directory.
    - ``picom/`` Picom configuration directory. Install ``picom`` for this to take effect.
    - ``rofi/`` Rofi configuration directory.
+
+Link/copy configuration files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Edit configurations
 ^^^^^^^^^^^^^^^^^^^
