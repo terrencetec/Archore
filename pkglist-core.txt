@@ -2,6 +2,7 @@ xorg
 xdg-user-dirs
 qtile
 python-pip
+wireless-tools
 ly
 slock
 xss-lock

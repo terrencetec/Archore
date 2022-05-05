@@ -1,0 +1,12 @@
+cups
+zoom
+vlc
+qbittorrent
+virtualbox
+virtualbox-host-modules-arch
+feh
+texstudio
+textext-git
+inkscape
+smartmontools
+remmina

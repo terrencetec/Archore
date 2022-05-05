@@ -5,4 +5,6 @@ xbacklight
 ibus
 ibus-table-chinese
 dropbox
+dropbox-cli
 signal-desktop
+lm_sensors
