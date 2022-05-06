@@ -1,3 +1,4 @@
+neofetch
 variety
 picom
 redshift
