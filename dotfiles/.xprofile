@@ -22,4 +22,5 @@ variety &
 # Compositor
 picom &
 
+# Source custom xprofile
 ~/.xprofile.custom &
