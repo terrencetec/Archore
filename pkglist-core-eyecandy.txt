@@ -1,6 +1,6 @@
 variety
 picom
-reshift
+redshift
 htop
 tty-clock
 mcmojave-cursors

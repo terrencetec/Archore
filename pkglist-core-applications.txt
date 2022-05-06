@@ -1,7 +1,6 @@
 imwheel
 google-chrome
 shutter
-xbacklight
 ibus
 ibus-table-chinese
 dropbox

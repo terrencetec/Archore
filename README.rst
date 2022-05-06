@@ -471,7 +471,6 @@ The ``pkglist-core-applications.txt`` list contains
    imwheel
    google-chrome
    shutter
-   xbacklight
    ibus
    ibus-table-chinese
    dropbox
@@ -493,7 +492,7 @@ And, the ``pkglist-core-eyecandy.txt`` list contains
 
    variety
    picom
-   reshift
+   redshift
    htop
    tty-clock
    mcmojave-cursors
