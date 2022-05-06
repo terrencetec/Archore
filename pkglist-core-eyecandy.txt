@@ -2,6 +2,6 @@ variety
 picom
 redshift
 htop
-tty-clock
+tty-clock-git
 mcmojave-cursors
 xcb-util-cursor
