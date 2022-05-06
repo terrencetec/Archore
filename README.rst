@@ -506,6 +506,15 @@ So, it's best if these applications are installed as well.
 Remember to setup ``ibus``, ``dropbox`` and ``variety``.
 For ``variety``, I use my Arch wallpapers in ``Dropbox/wallpapers/``.
 
+**NOTE**, before installing dropbox, you might have to import gpg key.
+Type:
+
+.. code-block:: bash
+
+   gpg --recv-keys --keyserver hkp://pgp.mit.edu:80 FC918B335044912E
+
+or simply run ``./import-dropbox-gpg-key.sh``
+
 Graphics card driver
 ^^^^^^^^^^^^^^^^^^^^
 
