@@ -2,7 +2,6 @@ xorg
 xdg-user-dirs
 qtile
 python-pip
-wireless-tools
 wireless_tools
 ly
 slock
@@ -18,7 +17,6 @@ pavucontrol
 imwheel
 google-chrome
 shutter
-xbacklight
 ibus
 ibus-table-chinese
 dropbox
@@ -31,7 +29,6 @@ adobe-source-han-serif-otc-fonts
 ttf-joypixels
 variety
 picom
-reshift
 redshift
 htop
 tty-clock
