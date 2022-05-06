@@ -3,6 +3,7 @@ xdg-user-dirs
 qtile
 python-pip
 wireless-tools
+wireless_tools
 ly
 slock
 xss-lock
@@ -31,6 +32,7 @@ ttf-joypixels
 variety
 picom
 reshift
+redshift
 htop
 tty-clock
 mcmojave-cursors
