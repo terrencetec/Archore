@@ -1,3 +1,4 @@
 # ~/.bashrc.custom
 # Acrhore .bashrc
 # Modify this file instead of ~/.bashrc
+echo This message comes from $HOME/.bashrc.custom.
