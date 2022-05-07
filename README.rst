@@ -3,7 +3,7 @@ Arch-core
 Core scripts, templates, configuration files, and instructions for setting up my Arch Linux.
 
 .. contents::
-   :depth: 2
+   :depth: 3 
    
 Installation
 ============
@@ -506,6 +506,8 @@ So, it's best if these applications are installed as well.
 Remember to setup ``ibus``, ``dropbox`` and ``variety``.
 For ``variety``, I use my Arch wallpapers in ``Dropbox/wallpapers/``.
 
+Dropbox GPG key
+^^^^^^^^^^^^^^^
 **NOTE**, before installing dropbox, you might have to import gpg key.
 Type:
 
@@ -514,6 +516,34 @@ Type:
    gpg --recv-keys --keyserver hkp://pgp.mit.edu:80 FC918B335044912E
 
 or simply run ``./import-dropbox-gpg-key.sh``
+
+Ibus setup
+^^^^^^^^^^
+I use Alt+Shift_L as my shortcut for switching input method.
+To set this, type ``ibus-setup`` in a terminal.
+Click the three dots on the right.
+In the "Key code" box, type "Shift_L".
+And select "Alt" as the modifier.
+Press "add".
+
+Select the Input Method tab.
+Click "add".
+Select Chinese and find "Quick Classic".
+Click "Preference".
+For Chinese mode, select "All Chinese characters".
+For page size, select "9".
+Select the Details tab.
+Untick "Auto select"
+
+Variety
+^^^^^^^
+Click the Variety tray icon and click preference.
+Untick "Start Variety when the computer starts".
+Change wallpaper every "30 minutes".
+Tick "Change wallpaper on start".
+Click "Add..." on the right.
+Add ``/home/username/Dropbox/wallpapers/``.
+Untick other image sources and tick the dropbox/wallpapers/ source.
 
 Graphics card driver
 ^^^^^^^^^^^^^^^^^^^^
@@ -681,3 +711,41 @@ Install optional packages
 -------------------------
 Install optional packages in ``pkglist-optional.txt``
 Here are applications that I use, but may not be necessary.
+
+.. code-block:: bash
+
+   # pkglist-optional.ext
+   cups  # For printing
+   zoom  # Remote meeting
+   vlc  # Video player
+   qbittorrent  # Torrent
+   virtualbox  # Virtual machine
+   virtualbox-host-modules-arch
+   feh  # Image viewer
+   texstudio  # Latex
+   textext-git  # Inkscape latex extension
+   inkscape  # SVG drawer
+   smartmontools  # S.M.A.R.T utitlies for storage drives
+   remmina  # Remote control
+   timeshift  # Backup
+   
+
+Set up and configurations
+#########################
+CUPS
+^^^^
+For my HP Officejet 4630, install ``hplip`` package.
+
+Enable and start ``cups.service``
+
+.. code-block:: bash
+
+   systemctl enable cups.service
+   systemctl start cups.service
+
+Go to a browser and type ``localhost:631`` to access the CUPS server.
+
+Select the ``Administration`` tab to add and setup printers.
+
+timeshift
+^^^^^^^^^
