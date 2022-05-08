@@ -25,8 +25,8 @@ screen_width, screen_height = _get_resolution()
 # Clock font size has a multiplier of 1/2 so it was 9.
 default_barsize = int(screen_height/1440*32)
 default_fontsize = int(default_barsize*0.5625)
-default_iconsize = int(default_fontsize*3/4)
-default_clock_fontsize = int(default_fontsize*1/2)
+default_iconsize = int(default_fontsize)
+default_clock_fontsize = int(default_fontsize*2/3)
 
 # Config
 config = configparser.ConfigParser(allow_no_value=True)
@@ -136,7 +136,7 @@ if "wlan" in config.sections():
     disconnect_message = config["wlan"]["disconnect_message"]
     widget_wlan = widget.Wlan(
         interface=interface,
-        format=format,
+        format=format, 
         disconnect_message=disconnect_message,
     )
     widget_list.append(widget_wlan)
