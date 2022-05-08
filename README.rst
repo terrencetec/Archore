@@ -1,5 +1,5 @@
-Arch-core
-==========
+Archore
+=======
 Core scripts, templates, configuration files, and instructions for setting up my Arch Linux.
 
 .. contents::
@@ -376,7 +376,7 @@ Go back to home directory before cloning, i.e. don't clone this into the ``paru`
 
 .. code-block:: bash
 
-   git clone https://github.com/terrencetec/Arch-core.git
+   git clone https://github.com/terrencetec/Archore.git
    
 Or, use ssh if you are me. In this case, generate ssh-key and upload it to GitHub prior to this.
 
@@ -389,7 +389,7 @@ Or, use ssh if you are me. In this case, generate ssh-key and upload it to GitHu
 
 .. code-block:: bash
 
-   git clone git@github.com:terrencetec/Arch-core.git
+   git clone git@github.com:terrencetec/Archore.git
    
 Install core packages
 ---------------------
@@ -418,7 +418,7 @@ Install them using ``paru``.
 
 .. code-block:: bash
    
-   cd Arch-core
+   cd Archore
    paru -S - < pkglist-core.txt
 
 Alternatively, add the ``--needed`` tag to avoid reinstalling packages
@@ -499,7 +499,7 @@ And, the ``pkglist-core-eyecandy.txt`` list contains
    xcb-util-cursor  # Required by Qtile
 
 The system doesn't require these applications and utilities to work.
-However, some `configuration files <https://github.com/terrencetec/Arch-core/blob/master/README.rst#configurations-for-core-programs>`_
+However, some `configuration files <https://github.com/terrencetec/Archore/blob/master/README.rst#configurations-for-core-programs>`_
 of the core programs were built around these applications and utilities.
 So, it's best if these applications are installed as well.
 
