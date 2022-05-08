@@ -731,9 +731,9 @@ Here are applications that I use, but may not be necessary.
    
 
 Set up and configurations
-#########################
+^^^^^^^^^^^^^^^^^^^^^^^^^
 CUPS
-^^^^
+####
 For my HP Officejet 4630, install ``hplip`` package.
 
 Enable and start ``cups.service``
@@ -748,4 +748,7 @@ Go to a browser and type ``localhost:631`` to access the CUPS server.
 Select the ``Administration`` tab to add and setup printers.
 
 timeshift
-^^^^^^^^^
+#########
+
+Cheatsheet
+==========
