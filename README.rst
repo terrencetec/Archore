@@ -311,6 +311,11 @@ Edit the following in ``/etc/default/grub``
    GRUB_SAVEDEFAULT=true
    ...
    GRUB_DISABLE_SUBMENU=y
+   ...
+   # If dual-boot,
+   GRUB_DISABLE_OS_PROBER=false
+
+For dual-booting, remember to mount other OS's efi partition and use ``os-prober``.
 
 After making changes in ``/etc/default/grub``, remember to generate ``/boot/grub/grub.cfg`` by typing
 
