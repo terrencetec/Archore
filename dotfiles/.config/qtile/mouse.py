@@ -9,7 +9,7 @@ import os
 from libqtile.lazy import lazy
 from libqtile.config import Click, Drag
 
-from _keys import decipher_shortcut, mod
+from keys import decipher_shortcut, mod
 
 
 path_home = os.path.expanduser('~')
