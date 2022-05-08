@@ -248,7 +248,7 @@ Create ``/etc/locale.conf`` and set the ``LANG`` variable
 .. code-block:: bash
 
    # /etc/locale.conf
-   LANG=en_US.UTF8 UTF8
+   LANG=en_US.UTF-8
 
 Network configuration
 ^^^^^^^^^^^^^^^^^^^^^
