@@ -157,7 +157,8 @@ Use reflector
 
 .. code-block:: bash
 
-   reflector --country country --protocol https --sort score --save \etc\pacman.d\mirrorlist
+   reflector --country country --protocol https --sort score --save /etc/pacman.d/mirrorlist
+etc\pacman.d\mirrorlist
 
 | Replace ``country`` with a comma separated list, e.g. ``Hong\ Kong,Japan``.
 | To get a list of countries, run
