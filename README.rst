@@ -42,7 +42,7 @@ where ``device`` is your device.
 
 .. code-block::
 
-   [iwd]# station device get-network
+   [iwd]# station device get-networks
 
 .. code-block::
 
