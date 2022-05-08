@@ -1,4 +1,4 @@
-nerd-fonts-dejavu-complete
+nerd-fonts-complete
 adobe-source-han-sans-otc-fonts
 adobe-source-han-serif-otc-fonts
 ttf-joypixels

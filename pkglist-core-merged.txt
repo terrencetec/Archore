@@ -24,13 +24,16 @@ dropbox-cli
 signal-desktop
 lm_sensors
 nerd-fonts-dejavu-complete
+nerd-fonts-complete
 adobe-source-han-sans-otc-fonts
 adobe-source-han-serif-otc-fonts
 ttf-joypixels
+neofetch
 variety
 picom
 redshift
 htop
 tty-clock
+tty-clock-git
 mcmojave-cursors
 xcb-util-cursor
