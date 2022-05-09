@@ -11,3 +11,4 @@ inkscape
 smartmontools
 remmina
 timeshift
+unzip

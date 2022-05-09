@@ -785,6 +785,7 @@ Here are applications that I use, but may not be necessary.
    smartmontools  # S.M.A.R.T utitlies for storage drives
    remmina  # Remote control
    timeshift  # Backup
+   unzip  # Unzip...
    
 
 Set up and configurations
