@@ -158,6 +158,8 @@ if "cpu" in config.sections():
 if "thermal_sensor" in config.sections():
     tag_sensor = config["thermal_sensor"]["tag_sensor"]
     fmt = config["thermal_sensor"]["fmt"]
+    fmt = fmt.strip('"')
+    fmt = fmt.strip("'")
     padding = config["thermal_sensor"].getint("padding")
     update_interval = config["thermal_sensor"].getint("update_interval")
     font = config["thermal_sensor"].get("font", fallback=default_font)
