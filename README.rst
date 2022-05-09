@@ -248,7 +248,7 @@ Create ``/etc/locale.conf`` and set the ``LANG`` variable
 .. code-block:: bash
 
    # /etc/locale.conf
-   LANG=en_US.UTF8 UTF8
+   LANG=en_US.UTF-8
 
 Network configuration
 ^^^^^^^^^^^^^^^^^^^^^
@@ -396,7 +396,49 @@ Or, use ssh if you are me. In this case, generate ssh-key and upload it to GitHu
 .. code-block:: bash
 
    git clone git@github.com:terrencetec/Archore.git
+
+(Optional) Enable ``pacman`` parallel downloads and eyecandy
+------------------------------------------------------------
+Edit ``/etc/pacman.conf`` and uncomment/add the following lines.
+
+.. code-block:: bash
+
+   # /etc/pacman.conf
+   ...
+   ParallelDownloads = 5
+   ILoveCandy
+   ...
+
+Enable ``multilib``
+^^^^^^^^^^^^^^^^^^^
+| This enables 32-bit stuff, ``steam``, ``lib32-*``, etc...
+| If this is not enabled, packages containing ``lib32-`` prefix cannot be found when attempting to install them.
+| Edit ``/etc/pacman.conf``.
+| Uncomment the following lines (around line 94-95)
+
+.. code-block:: bash
    
+      [multilib]
+      Include = /etc/pacman.d/mirrorlist
+
+(Look ahead) Install all packages below
+---------------------------------------
+All core packages are listed below, i.e. ``pkglist-core.txt``,
+``pkglist-core-applications.txt``, ``pkglist-core-fonts.txt``,
+and ``pkglist-core-eyecandy.txt`` are merged to ``pkglist-core-merged.txt``.
+
+To install all core packages, type
+
+.. code-block:: bash
+
+   paru -Syu - < pkglist-core-merged.txt
+
+Then, install optional packages:
+
+.. code-block:: bash
+
+   paru -Syu - < pkglist-optional.txt
+
 Install core packages
 ---------------------
 | The core packages of my Linux system is listed in ``pkglist-core.txt``.
@@ -425,13 +467,13 @@ Install them using ``paru``.
 .. code-block:: bash
    
    cd Archore
-   paru -S - < pkglist-core.txt
+   paru -Syu - < pkglist-core.txt
 
 Alternatively, add the ``--needed`` tag to avoid reinstalling packages
 
 .. code-block:: bash
 
-   paru -S --needed < pkglist-core.txt
+   paru -Syu --needed < pkglist-core.txt
 
 Python dependencies for my qtile configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -441,18 +483,6 @@ Optionally, install required Python packages for qtile.
 
    pip install iwlib psutil screeninfo
 
-(Optional) Enable ``multilib``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-| This enables 32-bit stuff, ``steam``, ``lib32-*``, etc...
-| If this is not enabled, packages containing ``lib32-`` prefix cannot be found when attempting to install them.
-| Edit ``/etc/pacman.conf``.
-| Uncomment the following lines (around line 94-95)
-
-.. code-block:: bash
-   
-      [multilib]
-      Include = /etc/pacman.d/mirrorlist
-
 (Optional) Core applications, fonts, and eye candy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Install applications listed in ``pkglist-core-applications.txt``, ``pkglist-core-fonts``, and
@@ -460,15 +490,15 @@ Install applications listed in ``pkglist-core-applications.txt``, ``pkglist-core
 
 .. code-block:: bash
 
-   paru -S - < pkglist-core-applications.txt
+   paru -Syu - < pkglist-core-applications.txt
 
 .. code-block:: bash
    
-   paru -S - < pkglist-core-fonts.txt
+   paru -Syu - < pkglist-core-fonts.txt
    
 .. code-block:: bash
 
-   paru -S - < pkglist-core-eyecandy.txt
+   paru -Syu - < pkglist-core-eyecandy.txt
 
 The ``pkglist-core-applications.txt`` list contains
 
@@ -480,6 +510,7 @@ The ``pkglist-core-applications.txt`` list contains
    ibus
    ibus-table-chinese
    dropbox
+   dropbox-cli
    signal-desktop
    lm-sensors
 
@@ -496,11 +527,12 @@ And, the ``pkglist-core-eyecandy.txt`` list contains
 
 .. code-block:: bash
 
+   neofetch
    variety
    picom
    redshift
    htop
-   tty-clock
+   tty-clock-git
    mcmojave-cursors
    xcb-util-cursor  # Required by Qtile
 
@@ -713,6 +745,25 @@ In addition, modify ``/usr/lib/systemd/system/ly.service``.
    EXecStart=.....
    ...
 
+(optional) Select default audio card
+####################################
+To list all audio cards, type
+
+.. code-block:: bash
+
+   cat /proc/asound/cards
+
+Identify the desired default audio card and then create ``/etc/asound.conf``
+
+.. code-block:: bash
+
+   # /etc/asound.conf
+   defaults.pcm.card 1
+   defaults.ctl.card 1
+
+and replace ``1`` with the desired card number.
+Re-login to take effect.
+
 Install optional packages
 -------------------------
 Install optional packages in ``pkglist-optional.txt``
@@ -720,7 +771,7 @@ Here are applications that I use, but may not be necessary.
 
 .. code-block:: bash
 
-   # pkglist-optional.ext
+   # pkglist-optional.txt
    cups  # For printing
    zoom  # Remote meeting
    vlc  # Video player
@@ -758,3 +809,7 @@ timeshift
 
 Cheatsheet
 ==========
+Grub
+----
+Audio playback
+--------------
