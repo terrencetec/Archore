@@ -807,10 +807,32 @@ Select the ``Administration`` tab to add and setup printers.
 
 timeshift
 #########
+Type
 
-Cheatsheet
-==========
+.. code-block:: bash
+
+   sudo timeshift-gtk
+
+To open the timeshift GUI.
+
+I am a first time ``timeshift`` user.
+I backup daily (5 copies), weekly (3 copies), and monthly (2 copies) and
+I backup my user hidden files.
+
+Cheatsheet, Perks, and Miscellaneous
+====================================
 Grub
 ----
 Audio playback
 --------------
+Kernel parameters
+-----------------
+Keychron K1 function keys
+-------------------------
+To enable my keychron K1 function keys, create ``/etc/modprobe.d/hid_apple``
+and add the following line
+
+.. code-block:: bash
+
+   # /etc/modprobe.d/hid_apple.conf
+   options hid_apple fnmode=0
