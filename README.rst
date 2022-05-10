@@ -807,6 +807,13 @@ Select the ``Administration`` tab to add and setup printers.
 
 timeshift
 #########
+Enable ``cronie.service``.
+
+.. code-block:: bash
+
+   sudo systemctl enable cronie.service
+   sudo systemctl start cronie.service
+
 Type
 
 .. code-block:: bash
