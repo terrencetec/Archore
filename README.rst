@@ -824,7 +824,7 @@ To open the timeshift GUI.
 
 | I am a first time ``timeshift`` user.
 | I backup hourly (6 copies), daily (5 copies), weekly (3 copies), and
-monthly (2 copies).
+  monthly (2 copies).
 | I also  backup my user hidden files.
 
 Samba client
