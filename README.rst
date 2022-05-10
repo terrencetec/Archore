@@ -826,6 +826,65 @@ I am a first time ``timeshift`` user.
 I backup daily (5 copies), weekly (3 copies), and monthly (2 copies) and
 I backup my user hidden files.
 
+Samba client
+############
+Create ``/etc/samba/smb.conf``.
+
+.. code-block:: bash
+
+   # /etc/samba/smb.conf
+   sudo mkdir /etc/samba
+   sudo touch /etc/samba/smb.conf
+
+Create ``/etc/samba/credentials/share``.
+
+.. code-blcok:: bash
+
+   # /etc/samba/credentials/share
+   username=your_username
+   password=your_password
+
+
+Replace `your_username` and `your_password` with your username and password
+to the samba server.
+
+Change permission to the file to hide the password.
+
+.. code-block:: bash
+
+   sudo chown root:root /etc/samba/credentials
+   sudo chmod 700 /etc/samba/credentials
+   sudo chmod 600 /etc/samba/credentials/share
+
+Modify ``/etc/fstab``.
+
+.. code-block:: bash
+
+   # /etc/fstab
+   //server/share /path/to/mount_point cifs _netdev,nofail,credentials=/etc/samba/credentials/share,gid=storage,file_mode=0770,dir_mode=0770 0 0
+
+Create ``/etc/NetworkManager/dispatcher.d/30-samba.sh``.
+
+.. code-block:: bash
+
+   # /etc/NetworkManager/dispatcher.d/30-samba.sh
+   # !/bin/sh
+
+   case "$2" in
+           up)
+                   mount -a -t cifs -o credentials=/etc/samba/credentials/share
+                   ;;
+           down)
+                   umount -l -a -t cifs
+                   ;;
+   esac
+
+Make it executable.
+
+.. code-block:: bash
+
+   sudo chmod +x /etc/NetworkManager/dispatcher.d/30-samba.sh
+
 Cheatsheet, Perks, and Miscellaneous
 ====================================
 Grub
