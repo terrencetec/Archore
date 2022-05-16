@@ -930,3 +930,24 @@ and add the following line
 
    # /etc/modprobe.d/hid_apple.conf
    options hid_apple fnmode=0
+
+Conda
+-----
+Add new environment.
+
+.. code-block:: bash
+
+   conda create -n name
+
+Install packages from a list.
+
+.. code-block:: bash
+
+   conda install -c channel $(cat requirements.txt).
+
+Activate and deactivate
+
+.. code-block:: bash
+
+   conda activate environment
+   conda deactivate
