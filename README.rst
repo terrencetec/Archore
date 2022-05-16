@@ -886,6 +886,33 @@ Make it executable.
 
    sudo chmod +x /etc/NetworkManager/dispatcher.d/30-samba.sh
 
+Conda
+#####
+| Download ``Miniconda64`` from
+`https://docs.conda.io/en/latest/miniconda.html <https://docs.conda.io/en/latest/miniconda.html>`_.
+| Or simply use ``wget``
+
+.. code-block:: bash
+
+   wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+And then, run the script.
+
+.. code-block:: bash
+
+   chmod +x Miniconda3-latest-Linux-x86_64.sh
+   ./Miniconda3-latest-Linux-x86_64.sh
+
+Open a new terminal and then disable the ``(base)`` environment
+
+.. code-block:: bash
+
+   conda config --set auto_activate_base false
+
+| Reset the bash script.
+| Open ``~/.bashrc`` and copy the contents added by the ``conda init`` command
+  to ``~/.bashrc.custom.
+
 Cheatsheet, Perks, and Miscellaneous
 ====================================
 Grub
