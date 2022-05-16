@@ -911,7 +911,7 @@ Open a new terminal and then disable the ``(base)`` environment
 
 | Reset the bash script.
 | Open ``~/.bashrc`` and copy the contents added by the ``conda init`` command
-  to ``~/.bashrc.custom.
+  to ``~/.bashrc.custom``.
 
 Cheatsheet, Perks, and Miscellaneous
 ====================================
