@@ -951,3 +951,32 @@ Activate and deactivate
 
    conda activate environment
    conda deactivate
+
+OpenVPN Client
+--------------
+Install ``networkmanager-openvpn`` and ``openvpn``.
+
+.. code-block:: bash
+
+   paru networkmanager-openvpn openvpn
+
+Import ``.ovpn`` config.
+
+.. code-block:: bash
+
+   nmcli connection import type openvpn file file.ovpn
+
+Change ``file.ovpn`` to a desired ``vpn_server_name``.
+
+Connect to the VPN server.
+
+.. code-block:: bash
+   
+   nmcli c up vpn_server_name
+
+Disconenct.
+
+.. code-block:: bash
+
+   nmcli c down vpn_server_name
+
