@@ -42,7 +42,7 @@ message {
 
 textbox {
    text-color:@maincolor;
-   background-color:@textcolor;
+   background-color:@maincolor;
 }
 
 listview {
