@@ -34,7 +34,7 @@ default_config = {
 }
 
 layouts = [
-    layout.Max(**default_config),
+    layout.Max(),
     layout.MonadTall(**default_config),
 ]
 
