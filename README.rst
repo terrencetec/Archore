@@ -966,7 +966,9 @@ Import ``.ovpn`` config.
 
    nmcli connection import type openvpn file file.ovpn
 
-Change ``file.ovpn`` to a desired ``vpn_server_name``.
+| Change ``file.ovpn`` to a desired ``vpn_server_name``.
+| Note that networkmanager open support mobile configuration files.
+| For example, use the smart phone configruation from NETGEAR.
 
 Connect to the VPN server.
 
