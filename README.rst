@@ -222,7 +222,9 @@ Sync time.
 
 .. code-block:: bash
 
-   timdatectl set-ntp 1
+   timedatectl set-ntp 1
+
+It might take a reboot before this command can work.
 
 Localization
 ^^^^^^^^^^^^
@@ -315,7 +317,8 @@ Edit the following in ``/etc/default/grub``
    # If dual-boot,
    GRUB_DISABLE_OS_PROBER=false
 
-For dual-booting, remember to mount other OS's efi partition and use ``os-prober``.
+| For dual-booting, remember to mount other OS's efi partition and use ``os-prober``.
+| It might take a reboot for ``os-prober`` to find the other operating systems.
 
 After making changes in ``/etc/default/grub``, remember to generate ``/boot/grub/grub.cfg`` by typing
 
@@ -438,6 +441,22 @@ Then, install optional packages:
 .. code-block:: bash
 
    paru -Syu - < pkglist-optional.txt
+
+| Paru may complain about gpg key error when installing ``dropbox``.
+| See below for using ``gpg`` to import the key.
+| Alternatively, install ``wget``
+
+.. code-block:: bash
+
+   paru wget
+
+And then type
+
+.. code-block:: bash
+
+   wget https://linux.dropbox.com/fedora/rpm-public-key.asc
+   gpg --import rpm-public-key.asc
+
 
 Install core packages
 ---------------------
