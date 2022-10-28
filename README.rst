@@ -1001,3 +1001,6 @@ Disconenct.
 
    nmcli c down vpn_server_name
 
+Bluetooth earpuds
+-----------------
+Install ``pulseaudio-bluetooth`` and reboot.
