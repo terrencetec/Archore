@@ -985,7 +985,9 @@ Import ``.ovpn`` config.
 
    nmcli connection import type openvpn file file.ovpn
 
-Change ``file.ovpn`` to a desired ``vpn_server_name``.
+| Change ``file.ovpn`` to a desired ``vpn_server_name``.
+| Note that networkmanager open support mobile configuration files.
+| For example, use the smart phone configruation from NETGEAR.
 
 Connect to the VPN server.
 
@@ -998,6 +1000,10 @@ Disconenct.
 .. code-block:: bash
 
    nmcli c down vpn_server_name
+
+Bluetooth earpuds
+-----------------
+Install ``pulseaudio-bluetooth`` and reboot.
 
 Disable power off key
 ---------------------
