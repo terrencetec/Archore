@@ -999,3 +999,16 @@ Disconenct.
 
    nmcli c down vpn_server_name
 
+Disable power off key
+---------------------
+Edit ``/etc/systemd/logind.conf``
+
+.. code-block:: bash
+
+   HandlePowerKey=ignore
+
+Restart logind
+
+.. code-block:: bash
+
+   sudo systemctl restart systemd-logind
