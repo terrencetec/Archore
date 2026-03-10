@@ -343,6 +343,9 @@ Create system user
 sudo
 ^^^^
 Type
+.. code-block:: bash
+   
+   ln -sf /usr/bin/vim /usr/bin/vim
 
 .. code-block:: bash
 
@@ -434,13 +437,13 @@ To install all core packages, type
 
 .. code-block:: bash
 
-   paru -Syu - < pkglist-core-merged.txt
+   paru -Syu $(cat pkglist-core-merged.txt)
 
 Then, install optional packages:
 
 .. code-block:: bash
 
-   paru -Syu - < pkglist-optional.txt
+   paru -Syu  ($ pkglist-optional.txt)
 
 | Paru may complain about gpg key error when installing ``dropbox``.
 | See below for using ``gpg`` to import the key.
@@ -486,21 +489,21 @@ Install them using ``paru``.
 .. code-block:: bash
    
    cd Archore
-   paru -Syu - < pkglist-core.txt
+   paru -Syu $(cat pkglist-core.txt)
 
 Alternatively, add the ``--needed`` tag to avoid reinstalling packages
 
 .. code-block:: bash
 
-   paru -Syu --needed < pkglist-core.txt
+   paru -Syu --needed $(cat pkglist-core.txt)
 
 Python dependencies for my qtile configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Optionally, install required Python packages for qtile.
 
 .. code-block::
-
-   pip install iwlib psutil screeninfo
+   
+   paru -Syu python-iwlib python-psutil python-screeninfo
 
 (Optional) Core applications, fonts, and eye candy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -509,15 +512,15 @@ Install applications listed in ``pkglist-core-applications.txt``, ``pkglist-core
 
 .. code-block:: bash
 
-   paru -Syu - < pkglist-core-applications.txt
+   paru -Syu $(cat pkglist-core-applications.txt)
 
 .. code-block:: bash
    
-   paru -Syu - < pkglist-core-fonts.txt
+   paru -Syu $(cat pkglist-core-fonts.txt)
    
 .. code-block:: bash
 
-   paru -Syu - < pkglist-core-eyecandy.txt
+   paru -Syu $(cat pkglist-core-eyecandy.txt)
 
 The ``pkglist-core-applications.txt`` list contains
 
@@ -616,23 +619,23 @@ For Nvidia GPUs:
 
 .. code-block::
 
-   paru nvidia lib32-nvidia-utils
+   paru nvidia-open lib32-nvidia-utils
 
-For LTS kernels, also install ``nvidia-lts``
+For LTS kernels, also install ``nvidia-open-lts``
 
 .. code-block::
 
-   paru nvidia-lts
+   paru nvidia-open-lts
 
 Or use the package lists in the repository.
 
 .. code-block::
 
-   paru -S - < pkglist-amdgpu.txt
+   paru -S $(cat pkglist-amdgpu.txt)
 
 .. code-block::
 
-   paru -S - < pkglist-nvidia.txt
+   paru -S $(cat pkglist-nvidia.txt)
 
 Enable core services
 --------------------
@@ -648,7 +651,11 @@ Display manager
 ^^^^^^^^^^^^^^^
 .. code-block:: bash
 
-   sudo systemctl enable ly.service
+   sudo systemctl enable ly@tty2.service
+
+..code-block:: bash
+
+   sudo systemctl disable getty@tty2.service
 
 Configurations for core programs
 -------------------------------
@@ -671,6 +678,9 @@ The ``dotfiles`` directory contains
 - ``icons/`` Icons.
    - ``default/`` Defaults.
       -``index.theme`` Cursor theme.
+.. code-block::
+
+   pip install iwlib psutil screeninfo
      
 
 Link/copy configuration files

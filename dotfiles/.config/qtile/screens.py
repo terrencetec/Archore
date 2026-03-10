@@ -90,6 +90,7 @@ if "group_box" in config.sections():
         block_highlight_text_color=block_highlight_text_color,
         borderwidth=borderwidth,
         highlight_method=highlight_method,
+        padding=1,
     )
     widget_list.append(widget_groupbox)
 

@@ -14,6 +14,7 @@ rofi
 alsa-utils
 pulseaudio
 pavucontrol
+lm-sensors
 imwheel
 google-chrome
 shutter
@@ -22,8 +23,7 @@ ibus-table-chinese
 dropbox
 dropbox-cli
 signal-desktop
-lm_sensors
-nerd-fonts-dejavu-complete
+ttf-dejavu-nerd
 nerd-fonts-complete
 adobe-source-han-sans-otc-fonts
 adobe-source-han-serif-otc-fonts

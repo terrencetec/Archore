@@ -5,6 +5,7 @@ qbittorrent
 virtualbox
 virtualbox-host-modules-arch
 feh
+texlive
 texstudio
 textext-git
 inkscape
